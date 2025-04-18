@@ -2,7 +2,10 @@
 *.env
 
 # MP3 Variables (voice output)
-*.MP3
+*.mp3
+
+# PKL Files
+*.pkl
 
 # Python
 __pycache__/
