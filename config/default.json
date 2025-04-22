@@ -1,0 +1,18 @@
+{
+    "weather": {
+      "cities": ["London", "Paris", "Amsterdam", "Copenhagen", "Edinburgh"],
+      "forecasts_per_city": 3,
+      "refresh_interval_hours": 3
+    },
+    "speech": {
+      "voice_name": "en-US-Chirp3-HD-Achernar",
+      "speaking_rate": 1.0,
+      "pitch": 0.0
+    },
+    "brief": {
+      "generation_time": "06:00",
+      "sections": ["weather", "news", "calendar"],
+      "output_formats": ["audio", "text"]
+    }
+}
+
