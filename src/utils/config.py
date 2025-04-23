@@ -8,4 +8,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 API_KEY_OPEN_WEATHER = os.getenv("API_KEY_OPEN_WEATHER")
+GOOGLE_APP_CREDENTIALS_PATH = os.getenv("GOOGLE_APP_CREDENTIALS_PATH")
+
 
