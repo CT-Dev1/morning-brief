@@ -1,8 +1,8 @@
 {
     "weather": {
-      "cities": ["London", "Paris", "Amsterdam", "Copenhagen", "Edinburgh"],
-      "forecasts_per_city": 3,
-      "refresh_interval_hours": 3
+      "post_code": "wc1e",
+      "country_code": "gb", 
+      "forecasts_to_give": 4
     },
     "speech": {
       "voice_name": "en-US-Chirp3-HD-Achernar",
