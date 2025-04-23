@@ -1,5 +1,7 @@
 import os
 import requests
+
+# Load in .env variables from config (api keys)
 from src.utils.config import API_KEY_OPEN_WEATHER
 
 # add function for getting current weather
