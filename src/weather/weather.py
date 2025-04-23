@@ -1,6 +1,6 @@
-import requests
-from dotenv import load_dotenv
 import os
+import requests
+from src.utils.config import API_KEY_OPEN_WEATHER
 
 # add function for getting current weather
 
@@ -19,7 +19,7 @@ def get_forecast_by_city(city: str, num_forecast : int):
     # improperly formatted city names, or negative forecast number inputs
     # API errors
     
-    api_key = os.getenv("API_KEY")
+    api_key = API_KEY_OPEN_WEATHER
     units = "metric"
     cnt = num_forecast
     url = f"http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units={units}&cnt={cnt}"
@@ -57,7 +57,7 @@ def get_forecast_by_zip_code(zip_code :str, country_code: str, num_forecast: int
     # or negative forecast number inputs
     # API errors
     
-    api_key = os.getenv("API_KEY")
+    api_key = API_KEY_OPEN_WEATHER
     units = "metric"
     cnt = num_forecast 
     url = f"http://api.openweathermap.org/data/2.5/forecast?zip={zip_code},{country_code}&appid={api_key}&units={units}&cnt={cnt}"
