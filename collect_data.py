@@ -3,6 +3,7 @@ import os
 import json
 from src.weather import get_forecast_by_city, get_forecast_by_zip_code
 from src.stocks import get_daily_time_series
+from src.news import get_guardian_news_today_json
 
 # collect weather data example
 # print(get_forecast_by_city("London", 6))
@@ -27,3 +28,7 @@ stock_price = get_daily_time_series("NVDA")
 
 print(stock_price)
 
+# Example of how to get recent news headline from guardian
+
+news_headlines = get_guardian_news_today_json()
+print(news_headlines)
