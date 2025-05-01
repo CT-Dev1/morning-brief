@@ -11,7 +11,7 @@ from googleapiclient.errors import HttpError
 # Define the scope for reading calendar events and list
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar.events.readonly"] # Added events scope for clarity
 # Define paths relative to this script's location
-TOKEN_PATH = os.path.join(os.path.dirname(__file__), "token_calendar.json") # Use a separate token file
+TOKEN_PATH = os.path.join(os.path.dirname(__file__), "token.json") # Use a separate token file
 CREDENTIALS_PATH = os.path.join(os.path.dirname(__file__), "oauth_credentials.json") # Use separate credentials if needed, or point to a shared one
 
 def _get_calendar_service():
@@ -67,7 +67,7 @@ def get_upcoming_events_json(calendar_ids=['primary'], days=5):
     Fetches upcoming events from the specified Google Calendars for the next N days.
 
     Handles OAuth 2.0 authentication flow. Requires 'oauth_credentials.json'
-    (or adjust path). Stores/uses 'token_calendar.json' for credentials.
+    (or adjust path). Stores/uses 'token.json' for credentials.
 
     Args:
         calendar_ids (list): A list of calendar IDs to fetch events from.
