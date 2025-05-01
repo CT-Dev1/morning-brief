@@ -4,6 +4,8 @@ import json
 from src.weather import get_forecast_by_city, get_forecast_by_zip_code
 from src.stocks import get_daily_time_series
 from src.news import get_guardian_news_today_json
+# Import the email function
+from src.email_retrieve import get_top_emails_json
 
 # collect weather data example
 # print(get_forecast_by_city("London", 6))
@@ -32,3 +34,18 @@ print(stock_price)
 
 news_headlines = get_guardian_news_today_json()
 print(news_headlines)
+
+# --- Test Email Retrieval ---
+print("\n--- Fetching Primary Emails ---")
+# You might want to request fewer emails for testing to speed things up
+primary_emails = get_top_emails_json(max_results=5)
+
+if primary_emails:
+    print(f"Successfully retrieved {len(primary_emails)} primary emails.")
+    # Optionally print details of the first email
+    if primary_emails:
+        print("\nDetails of the first email:")
+        print(json.dumps(primary_emails[0], indent=2))
+else:
+    print("Could not retrieve primary emails or none found.")
+# --- End Test Email Retrieval ---
