@@ -23,6 +23,7 @@ Thumbs.db
 # json - google auth docs
 oauth_credentials.json
 token.json
+token_calendar.json
 
 # private api access docs
 ollama_api_access.md
