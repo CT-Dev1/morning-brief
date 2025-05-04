@@ -21,5 +21,6 @@ SSH_HOST = os.getenv("SSH_HOST")
 SSH_PORT = os.getenv("SSH_PORT")    
 SSH_USERNAME = os.getenv("SSH_USERNAME")
 SSH_PRIVATE_KEY = os.getenv("SSH_PRIVATE_KEY")
+OLLAMA_API_BASE = os.getenv("OLLAMA_API_BASE")
 
 

@@ -1,11 +1,11 @@
 import os
 import requests
-import datetime
+from datetime import datetime
 
 # Load in .env variables from config (api keys)
 from src.utils.config import API_KEY_OPEN_WEATHER
 
-# add function for getting current weather
+# add functions for returning raw json responses
 
 # function for the weather forecast by city
 def get_forecast_by_city(city: str, num_forecast : int):
@@ -121,3 +121,7 @@ def get_current_weather_zipcode(zip_code: str, country_code: str):
     current_weather['sunset_time'] = datetime.fromtimestamp(data['sys']['sunset']).strftime('%Y-%m-%d %H:%M:%S') #convert from unix
     return current_weather
 
+
+if __name__ == "__main__":
+    result = get_forecast_by_zip_code('wc1e', 'gb', 3)
+    print(result)

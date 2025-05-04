@@ -28,3 +28,8 @@ token_calendar.json
 # private api access docs
 ollama_api_access.md
 
+#txt files
+*.txt
+
+# egg info (from installing project as a package)
+*.egg-info/
