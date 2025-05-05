@@ -1,3 +1,10 @@
+Rough data pipeline
+
+Raw Data (JSON) → Local LLMs → Structured Summaries → Aggregation Layer → High-end LLM → Final Brief
+
+collect_data.py → generate_script.py → text_to_speech.py → output.mp3
+
+
 
 Project Directory Plan
 
