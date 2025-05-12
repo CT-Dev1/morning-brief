@@ -33,3 +33,7 @@ ollama_api_access.md
 
 # egg info (from installing project as a package)
 *.egg-info/
+
+generate_script.py
+
+data/

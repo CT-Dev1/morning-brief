@@ -22,71 +22,53 @@ def load_config():
 
 config = load_config() # config acts a dictionary of dictionaries for our stored settings
 
+
 # Example of how to get weather data from src
 weather_forecasts =  get_forecast_by_zip_code(config['weather']['post_code'],config['weather']['country_code'],config['weather']['forecasts_to_give'])   
-print(weather_forecasts)
 
+# Write the data to be stored for the generation of the script
+with open('data/weather_data.json', 'w') as f:
+    json.dump(weather_forecasts, f)
 
-# Example of how to get stock price data from src
-stock_price = get_daily_time_series("NVDA")
-
-print(stock_price)
-
-# Example of how to get recent news headline from guardian
 
 news_headlines = get_guardian_news_today_json()
 print(news_headlines)
 
-# --- Test Email Retrieval ---
-print("\n--- Fetching Primary Emails ---")
-# You might want to request fewer emails for testing to speed things up
+with open('data/news_headlines.json', 'w') as f:
+    json.dump(news_headlines, f)
+
+
 primary_emails = get_top_emails_json(max_results=5)
 
-if primary_emails:
-    print(f"Successfully retrieved {len(primary_emails)} primary emails.")
-    # Optionally print details of the first email
-    if primary_emails:
-        print("\nDetails of the first email:")
-        print(json.dumps(primary_emails[0], indent=2))
-else:
-    print("Could not retrieve primary emails or none found.")
-# --- End Test Email Retrieval ---
+with open('data/primary_emails.json','w') as f:
+    json.dump(primary_emails, f)
 
-
-# --- Test Calendar Retrieval ---
-print("\n--- Listing Available Calendars ---")
 available_calendars = list_available_calendars()
 
-if available_calendars:
-    print(f"Found {len(available_calendars)} calendars.")
-    # Print summary of available calendars
-    for i, cal in enumerate(available_calendars):
-        print(f"  {i+1}. ID: {cal['id']}, Summary: {cal['summary']}, Role: {cal['accessRole']}")
+full_calendars = {} # empty object to store results
 
-    # Example: Fetch events only from the 'primary' calendar
-    print("\n--- Fetching Upcoming Calendar Events (Primary, Next 5 Days) ---")
-    primary_calendar_events = get_upcoming_events_json(calendar_ids=['primary'], days=5)
+for calendar_dict in available_calendars:
+    # retrieve upcoming events for that calendar, for now we'll just set it to three days
+    upcoming_events = get_upcoming_events_json(calendar_ids=[calendar_dict['id']], days=3)
+    # store the upcoming events
+    full_calendars[calendar_dict['summary']] = upcoming_events
 
-    if primary_calendar_events:
-        print(f"Successfully retrieved {len(primary_calendar_events)} upcoming events from primary calendar.")
-        if primary_calendar_events:
-            print("\nDetails of the first upcoming event (Primary):")
-            print(json.dumps(primary_calendar_events[0], indent=2))
-    else:
-        print("Could not retrieve upcoming events from primary calendar or none found.")
+with open('data/full_calendars.json', 'w') as f:
+    json.dump(full_calendars, f)
 
-    # Example: Fetch events from all available calendars (use with caution if many calendars)
-    # all_calendar_ids = [cal['id'] for cal in available_calendars]
-    # print(f"\n--- Fetching Upcoming Calendar Events (All Calendars: {len(all_calendar_ids)}, Next 2 Days) ---")
-    # all_events = get_upcoming_events_json(calendar_ids=all_calendar_ids, days=2)
-    # if all_events:
-    #     print(f"Successfully retrieved {len(all_events)} events from all calendars.")
-    #     if all_events:
-    #         print("\nDetails of the first upcoming event (All Calendars):")
-    #         print(json.dumps(all_events[0], indent=2))
-    # else:
-    #      print("Could not retrieve events from all calendars.")
+# %%
 
-else:
-    print("Could not retrieve the list of available calendars.")
+# Example: Fetch events from all available calendars
+# all_calendar_ids = [cal['id'] for cal in available_calendars]
+# print(f"\n--- Fetching Upcoming Calendar Events (All Calendars: {len(all_calendar_ids)}, Next 2 Days) ---")
+# all_events = get_upcoming_events_json(calendar_ids=all_calendar_ids, days=2)
+# if all_events:
+#     print(f"Successfully retrieved {len(all_events)} events from all calendars.")
+#     if all_events:
+#         print("\nDetails of the first upcoming event (All Calendars):")
+#         print(json.dumps(all_events[0], indent=2))
+# else:
+#      print("Could not retrieve events from all calendars.")
+
+# %%
 # --- End Test Calendar Retrieval ---

@@ -13,6 +13,11 @@
       "generation_time": "06:00",
       "sections": ["weather", "news", "calendar"],
       "output_formats": ["audio", "text"]
+    },
+    "news": {
+      "interest_area_1": "international relations",
+      "interest_area_2": "artificial intelligence",
+      "interest_area_3": "us politics"
     }
 }
 

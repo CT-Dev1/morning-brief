@@ -14,13 +14,6 @@ from src.utils.config import ALPHA_VANTAGE_API_KEY
 
 # Firstly The time series daily API - covers daily opening/closing prices
 
-stock_sym = "NVDA"
-url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_sym}&apikey={ALPHA_VANTAGE_API_KEY}'
-response = requests.get(url)
-data = response.json()
-
-print(json.dumps(data, indent = 5))
-
 def get_daily_time_series(ticker_sym: str):
     """Get daily stock prices for the ticker symbol for the past 4 months. Can be parsed further to isolate specific dates and price changes. Returns a raw json data response. 
     Can be filtered to get specific dates. 
@@ -33,7 +26,7 @@ def get_daily_time_series(ticker_sym: str):
     data = response.json()
     return data
 
-# %%
+#print(get_daily_time_series("NVDA"))
 
 # Secondly the intra-day price retrieval API - covers minute-by-minute prices and extended hours trading
 
@@ -45,3 +38,5 @@ def get_intraday_time_series(ticker_sym: str):
     response = requests.get(url)
     data = response.json()
     return data
+
+print(get_intraday_time_series("NVDA"))

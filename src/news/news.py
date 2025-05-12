@@ -14,7 +14,7 @@ def get_guardian_news_today_json(api_key = GUARDIAN_API_KEY):
         'from-date': today_str,
         'to-date': today_str,
         'show-fields': 'headline,shortUrl,firstPublicationDate', # Specify desired fields
-        'page-size': 50 # Adjust as needed
+        'page-size': 100 # Adjust as needed
     }
     
     try:
