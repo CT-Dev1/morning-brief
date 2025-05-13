@@ -38,7 +38,7 @@ with open('data/news_headlines.json', 'w') as f:
     json.dump(news_headlines, f)
 
 
-primary_emails = get_top_emails_json(max_results=5)
+primary_emails = get_top_emails_json(max_results=30)
 
 with open('data/primary_emails.json','w') as f:
     json.dump(primary_emails, f)
