@@ -1,17 +1,19 @@
 # 🌅 Morning Brief: AI-Powered Personal Assistant
 
-[![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Code Style](https://img.shields.io/badge/Code%20Style-Black-black.svg)](https://black.readthedocs.io/)
+An intelligent, automated morning briefing system that aggregates personalized data from multiple sources and generates a comprehensive daily summary using Large Language Models (LLMs). This summary can be read aloud to you in the morning to prepare you for the day.
 
-An intelligent, automated morning briefing system that aggregates personalized data from multiple sources and generates a comprehensive daily summary using advanced Large Language Models (LLMs). This project demonstrates expertise in AI integration, API orchestration, cloud services, and professional software development practices.
+This is an ongoing project, and **suitable** contributions are welcome.
+
+I aim to incorporate RAG functionality to expand the feature set to include tracking of more diverse, unstructured personal information stores in json, pdf, csv files, which can all be modularly included in daily AI briefings.
+
+I work on this project periodically. 
 
 ## 🎯 Project Overview
 
-The Morning Brief system creates a personalized daily audio briefing by:
-- **Collecting** real-time data from multiple APIs (Weather, News, Gmail, Google Calendar)
-- **Processing** raw data through a multi-tiered LLM pipeline
-- **Generating** coherent, conversational summaries using Google's Gemini AI
+The system creates a personalized daily audio briefing by:
+- **Collecting** real-time data from multiple APIs (Weather, News, Gmail, Google Calendar), stored in json
+- **Processing** raw data through a multi-tiered LLM pipeline, integrated with locally run deepseek R1 model/ Gemini Flash (reduce cloud computation costs)
+- **Generating** coherent, conversational summaries using Google's Gemini AI, script generation with adjustable prompts to customize different aspects of data reporting (with Gemini Pro)
 - **Converting** text to natural speech using Google Cloud Text-to-Speech
 
 ## 🏗️ Architecture & Data Flow
@@ -32,37 +34,28 @@ graph LR
     J --> K[Audio Output]
 ```
 
-### Data Pipeline Stages
-
-1. **Raw Data Collection** → Structured JSON storage
-2. **Mid-tier LLM Processing** → Context-aware summaries  
-3. **High-tier LLM Aggregation** → Conversational script generation
-4. **Audio Synthesis** → Natural speech output
-
 ## 🔧 Technical Implementation
 
-### Key Challenges Solved
-
-#### 1. **OAuth 2.0 Authentication Management**
-- Implemented robust token refresh mechanisms for Gmail and Calendar APIs
-- Built error handling for expired credentials with automatic re-authentication
-- Secure credential storage with environment variable configuration
-
-#### 2. **Multi-API Data Orchestration**
+#### - **OAuth 2.0 Authentication for GC integration**
+#### - **Multi-API Data Orchestration**
 - Designed modular data collection system with standardized JSON output
-- Implemented rate limiting and error handling for external API calls
 - Created configuration management system for API keys and settings
 
-#### 3. **LLM Pipeline Optimization**
-- **Tier 1**: Gemini Flash models for efficient data parsing and summarization
-- **Tier 2**: Gemini Pro for sophisticated script generation and narrative flow
-- Context-aware prompt engineering for consistent, high-quality outputs
-
-#### 4. **Professional Package Structure**
+#### - **Professional Package Structure**
 - Modular design with clear separation of concerns
-- Type hints and comprehensive documentation
-- Package installation support with `setup.py`
 - Proper import management and namespace organization
+- Testing code integrated with scripts
+- **Version control best practices** with comprehensive `.gitignore` and commit history
+
+
+#### - **Config File**
+- Future ease of customizability, cross-file coordination
+
+### ☁️ **Google Cloud Integration**
+- **Gmail API** for intelligent email summarization
+- **Google Calendar API** for schedule management
+- **Google Cloud Text-to-Speech** for natural audio generation
+- **Gemini AI models** for advanced text processing
 
 ## 📁 Project Structure
 
@@ -138,29 +131,6 @@ Morning_Brief/
   - Google Gemini AI
   - Alpha Vantage (stocks)
 
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/morning-brief.git
-   cd morning-brief
-   ```
-
-2. **Install the package in development mode:**
-   ```bash
-   pip install -e .
-   ```
-
-3. **Install required dependencies:**
-   ```bash
-   pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client requests
-   ```
-
-4. **Configure environment variables:**
-   - Set up API keys in `src/utils/config.py`
-   - Place Google OAuth credentials in appropriate directories
-   - Configure `config/default.json` with your preferences
-
 ### Usage
 
 1. **Collect Data:**
@@ -178,42 +148,6 @@ Morning_Brief/
    python text_to_speech.py
    ```
 
-## 🔑 Key Features
-
-### 🤖 **Advanced AI Integration**
-- **Multi-model LLM pipeline** using Google's Gemini Flash and Pro models
-- **Context-aware prompt engineering** for consistent, high-quality outputs
-- **Local LLM support** with Ollama integration for development/testing
-
-### 🔗 **Robust API Management**
-- **OAuth 2.0 authentication** with automatic token refresh
-- **Rate limiting and error handling** for external API calls
-- **Modular data collection** with standardized JSON interfaces
-
-### ☁️ **Google Cloud Integration**
-- **Gmail API** for intelligent email summarization
-- **Google Calendar API** for schedule management
-- **Google Cloud Text-to-Speech** for natural audio generation
-- **Gemini AI models** for advanced text processing
-
-### 🛠️ **Professional Development Practices**
-- **Package-based architecture** with proper namespace management
-- **Type hints and documentation** for maintainable code
-- **Modular design** with clear separation of concerns
-- **Version control best practices** with comprehensive `.gitignore`
-
-## 🎯 Skills Demonstrated
-
-- **Large Language Model Integration** (Gemini, Ollama)
-- **Google Cloud Platform Services** (Gmail, Calendar, TTS, AI)
-- **OAuth 2.0 Authentication Flows**
-- **RESTful API Integration** (Weather, News, Financial)
-- **Python Package Development** 
-- **Professional Project Architecture**
-- **Version Control & Documentation**
-- **Data Pipeline Design**
-- **Error Handling & Resilience**
-
 ## 📈 Future Enhancements
 
 - [ ] **Containerization** with Docker for deployment
@@ -227,11 +161,3 @@ Morning_Brief/
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-**Built with ❤️ using Python, Google Cloud, and AI**
