@@ -1,4 +1,4 @@
-# 🌅 Morning Brief: AI-Powered Personal Assistant
+# 🌅 Project Janice: AI-Powered Personal Assistant
 
 An intelligent, automated morning briefing system that aggregates personalized data from multiple sources and generates a comprehensive daily summary using Large Language Models (LLMs). This summary can be read aloud to you in the morning to prepare you for the day.
 
